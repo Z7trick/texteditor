@@ -7,7 +7,7 @@ const Portal = ({ children }: React.PropsWithChildren) => {
   useEffect(() => {
     document.body.appendChild(container);
     return () => {
-      document.removeChild(container);
+      document.body.removeChild(container);
     };
   }, []);
 

@@ -4,7 +4,7 @@ export const Note = () => {
   return (
     <main className={styles.root}>
       <section>
-        <Container></Container>
+        <Container>123</Container>
       </section>
     </main>
   );

@@ -1,0 +1,25 @@
+.form {
+  text-align: left;
+  display: flex;
+  row-gap: 0.8rem;
+  flex-direction: column;
+  label {
+    font-size: 18px;
+    font-weight: 800;
+  }
+  textarea {
+    padding: 6px 10px;
+    border-radius: 10px;
+    border-width: 1px;
+    resize: none;
+
+    font-size: 16px;
+  }
+  input:nth-child(2) {
+    padding: 6px 10px;
+    font-size: 16px;
+    border-radius: 10px;
+    border: solid;
+    border-width: 1px;
+  }
+}

@@ -1,13 +1,13 @@
 import styles from "./styles.module.scss";
 import Container from "../../components/Container/Container";
-import CreateNote from "../../components/CreateNote/CreateNote";
+import NotesList from "../../modules/NotesList";
 
 export const Root = () => {
   return (
     <main className={styles.root}>
       <section>
         <Container>
-          <CreateNote />
+          <NotesList />
         </Container>
       </section>
     </main>
