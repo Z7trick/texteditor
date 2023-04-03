@@ -15,7 +15,6 @@ let router = createBrowserRouter([
     path: "note/:noteId",
     element: <Note />,
     loader: noteLoader,
-    // action: noteAction,
     errorElement: <h2>Заметка не найдена</h2>,
   },
 ]);

@@ -1,12 +1,5 @@
-import {
-  useCallback,
-  useDeferredValue,
-  useEffect,
-  useLayoutEffect,
-  useMemo,
-  useState,
-} from "react";
-import { redirect, useLoaderData, useNavigate } from "react-router-dom";
+import { useMemo, useState } from "react";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { editNote, getNote } from "../../api/notes";
 import FormModal from "../../components/FormModal/FormModal";
 import NoteBlock from "../../components/NoteBlock/NoteBlock";
@@ -32,31 +25,36 @@ const SingleNote = () => {
     const updatedNote = {
       text,
       title,
-      tags: [
-        ...new Set(
-          tags.split(" ").map((item) => {
-            if (item[0] === "#") return item;
-            else return (item = "#" + item);
-          })
-        ),
-      ],
+      tags: tagsWithoutDuplicates,
       id: note.id,
     };
     await editNote(note.id, updatedNote);
     setIsOpened(false);
     navigate("/");
   };
+  const tagsWithoutDuplicates = useMemo(() => {
+    const a = tags.split(" ").map((item) => {
+      if (item[0] === "#") return item;
+      else if (item) return (item = "#" + item);
+      else return item;
+    });
+    return [...new Set(a)];
+  }, [tags]);
   const onChangeTitle = (event: React.FormEvent) => {
     const target = event.target as HTMLInputElement;
     setTitle(target.value);
   };
   const onChangeText = (event: React.FormEvent) => {
     const target = event.target as HTMLTextAreaElement;
+    const newTags = target.value.match(/(#\w+)|(#[а-я]+)/g)?.join(" ");
+    if (newTags && newTags !== tags) {
+      setTags(`${newTags}`);
+    } else if (!newTags) {
+      setTags("");
+    } else {
+      setTags((prev) => prev);
+    }
     setText(target.value);
-  };
-  const onChangeTags = (event: React.FormEvent) => {
-    const target = event.target as HTMLInputElement;
-    setTags(target.value);
   };
   return (
     <div className={styles.root}>
@@ -66,7 +64,6 @@ const SingleNote = () => {
           text={text}
           tags={tags}
           onSubmit={onSubmit}
-          onChangeTags={onChangeTags}
           onChangeText={onChangeText}
           onChangeTitle={onChangeTitle}
           buttonText="Подтвердить изменения"

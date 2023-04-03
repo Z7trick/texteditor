@@ -16,7 +16,11 @@ const NotesList = ({ notes }: { notes: Note[] }) => {
               <Link key={note.id} to={`/note/${note.id}`}>
                 <li className={styles.li}>
                   <h3>{note.title}</h3>
-                  <p>{note.text}</p>
+                  <p>
+                    {note.text.length > 140
+                      ? note.text.slice(0, 139) + "..."
+                      : note.text}
+                  </p>
                   <TagList tags={note && note.tags} />
                 </li>
               </Link>

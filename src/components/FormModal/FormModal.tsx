@@ -5,7 +5,6 @@ interface FormModalProps {
   onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
   onChangeTitle: (event: React.FormEvent<HTMLInputElement>) => void;
   onChangeText: (event: React.FormEvent<HTMLTextAreaElement>) => void;
-  onChangeTags: (event: React.FormEvent<HTMLInputElement>) => void;
   buttonText: string;
   title: string;
   text: string;
@@ -16,7 +15,6 @@ const FormModal = memo(
     onSubmit,
     onChangeTitle,
     onChangeText,
-    onChangeTags,
     buttonText,
     title,
     text,
@@ -42,14 +40,12 @@ const FormModal = memo(
             cols={30}
             rows={10}
           />
-          <label htmlFor="tags">Теги</label>
-          <input
-            value={tags}
-            placeholder="Напишите теги через пробел..."
-            onChange={onChangeTags}
-            type="text"
-            name="tags"
-          />
+          <h4>Теги</h4>
+          <ul>
+            {tags.split(" ").map((item, i) => (
+              <li key={i}>{item}</li>
+            ))}
+          </ul>
           <Button type="submit" text={buttonText} />
         </form>
       </>

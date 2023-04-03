@@ -3,7 +3,8 @@
   display: flex;
   row-gap: 0.8rem;
   flex-direction: column;
-  label {
+  label,
+  h4 {
     font-size: 18px;
     font-weight: 800;
   }
@@ -28,5 +29,18 @@
     border: solid;
     border-width: 1px;
     margin-bottom: 12px;
+  }
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    gap: 4px;
+    align-items: center;
+    margin-bottom: 10px;
+    li {
+      border-radius: 10px;
+      padding: 2px 4px;
+      background-color: #f2f2f2;
+    }
   }
 }
