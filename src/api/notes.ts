@@ -1,15 +1,33 @@
 import localforage from "localforage";
-import { Note } from "../modules/CreateNewNote/types/Note";
+import { Note } from "../types/Note";
 export async function getNotes() {
   let notes = await localforage.getItem("notes");
   if (!notes) notes = [];
   return notes as Note[];
 }
-export async function createNote({ title, text, tags }: Note) {
+type CreateNoteType = {
+  [key in keyof Note]?: Note[key];
+};
+export async function createNote({ title, text, tags }: CreateNoteType) {
   let id = Math.random().toString(36).substring(2, 9);
-  let note: Note = { id, title, text, tags };
+  if (title && text && tags) {
+    let note: Note = { id, title, text, tags };
+    let notes = await getNotes();
+    notes.unshift(note);
+    await set(notes);
+    return note;
+  }
+}
+export async function editNote(id: string, note: Note) {
   let notes = await getNotes();
-  notes.unshift(note);
+  notes = notes.map((item) => {
+    if (item.id === id) {
+      return note;
+    } else {
+      return item;
+    }
+  });
+  // [...notes, { id, ...note }]
   await set(notes);
   return note;
 }

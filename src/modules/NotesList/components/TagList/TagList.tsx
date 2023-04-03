@@ -8,7 +8,6 @@ const TagList = ({ tags }: TagListProps) => {
       {tags?.map((item, i) => {
         return (
           <li className={styles.item} key={i}>
-            {item.indexOf("#") === -1 ? "#" : null}
             {item}
           </li>
         );

@@ -1,4 +1,15 @@
 .root {
-  width: 100%;
-  height: 2rem;
+  width: max-content;
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+  position: relative;
+  span {
+    cursor: pointer;
+    font-size: 18px;
+    color: rgba($color: gray, $alpha: 1);
+    position: absolute;
+    right: 176px;
+    z-index: 10;
+  }
 }

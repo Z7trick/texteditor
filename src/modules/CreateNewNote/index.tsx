@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { createNote } from "../../api/notes";
+import FormModal from "../../components/FormModal/FormModal";
 import Button from "../../UI/button";
 import CreationModal from "./components/CreationModal/CreationModal";
-import FormModal from "./components/FormModal/FormModal";
 import styles from "./styles.module.scss";
 const CreateNewNote = () => {
   const [isOpened, setIsOpened] = useState(false);
@@ -15,7 +15,10 @@ const CreateNewNote = () => {
     await createNote({
       title,
       text,
-      tags: tags.split(" "),
+      tags: tags.split(" ").map((item) => {
+        if (item[0] === "#") return item;
+        else return (item = "#" + item);
+      }),
     });
     target.reset();
     setText("");
@@ -37,12 +40,12 @@ const CreateNewNote = () => {
   };
   return (
     <>
-      <CreationModal
-        onClose={() => setIsOpened(false)}
-        isOpened={isOpened}
-        onSubmit={onSubmit}
-      >
+      <CreationModal onClose={() => setIsOpened(false)} isOpened={isOpened}>
         <FormModal
+          title={title}
+          text={text}
+          tags={tags}
+          buttonText="Создать заметку"
           onChangeTags={onChangeTags}
           onChangeText={onChangeText}
           onChangeTitle={onChangeTitle}

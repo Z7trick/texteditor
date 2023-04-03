@@ -7,6 +7,11 @@
   }
 }
 .line {
+  width: 100%;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   background-color: #fff;
   border-radius: 20px;
   margin-bottom: 40px;

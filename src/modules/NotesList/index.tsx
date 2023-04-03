@@ -1,4 +1,4 @@
-import { Link, useLoaderData } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { getNotes } from "../../api/notes";
 import { Note } from "../../types/Note";
 import TagList from "./components/TagList/TagList";
@@ -6,8 +6,7 @@ import styles from "./styles.module.scss";
 export async function loader() {
   return getNotes();
 }
-const NotesList = () => {
-  const notes = useLoaderData() as Note[];
+const NotesList = ({ notes }: { notes: Note[] }) => {
   return (
     <div className={styles.root}>
       <ul className={styles.ul}>

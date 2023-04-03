@@ -2,7 +2,6 @@ import { memo, PropsWithChildren } from "react";
 import styles from "./styles.module.scss";
 interface ModalProps extends PropsWithChildren {
   title: string;
-  onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
   onClose: () => void;
 }
 const Modal = memo(({ title, onClose, children }: ModalProps) => {
