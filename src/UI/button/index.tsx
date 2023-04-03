@@ -1,3 +1,4 @@
+import { memo } from "react";
 import styles from "./styles.module.scss";
 interface ButtonProps {
   type?: "button" | "submit" | "reset";
@@ -6,7 +7,7 @@ interface ButtonProps {
   text: string;
 }
 
-const Button = ({ type, onClick, onSubmit, text }: ButtonProps) => {
+const Button = memo(({ type, onClick, onSubmit, text }: ButtonProps) => {
   return (
     <button
       className={styles.root}
@@ -17,6 +18,6 @@ const Button = ({ type, onClick, onSubmit, text }: ButtonProps) => {
       {text}
     </button>
   );
-};
+});
 
 export default Button;

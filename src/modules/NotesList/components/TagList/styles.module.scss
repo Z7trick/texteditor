@@ -1,0 +1,12 @@
+.root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.item {
+  border-radius: 10px;
+  padding: 2px 4px;
+  background-color: #f2f2f2;
+}

@@ -1,0 +1,37 @@
+.root {
+  max-width: 800px;
+  border: solid 1px rgba($color: #000, $alpha: 0.3);
+  border-radius: 20px;
+  padding: 18px 24px;
+  height: 100%;
+  width: auto;
+  display: flex;
+  justify-content: center;
+  align-items: left;
+  flex-direction: column;
+  background-color: white;
+  gap: 12px;
+  h1 {
+    line-height: 44px;
+    font-size: 48px;
+    font-weight: bold;
+  }
+  p {
+    line-height: 28px;
+    word-break: break-all;
+    font-weight: 400;
+    font-size: 24px;
+  }
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    li {
+      border-radius: 10px;
+      padding: 2px 4px;
+      background-color: #f2f2f2;
+      font-size: 16px;
+      font-weight: bold;
+    }
+  }
+}

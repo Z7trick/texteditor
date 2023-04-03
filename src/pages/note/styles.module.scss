@@ -1,4 +1,10 @@
 .root {
   height: 100%;
   width: 100%;
+  overflow-x: hidden;
+  background-color: #f2f2f2;
+  section {
+    padding-top: 120px;
+    padding-bottom: 120px;
+  }
 }

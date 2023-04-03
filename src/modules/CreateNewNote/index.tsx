@@ -3,6 +3,7 @@ import { createNote } from "../../api/notes";
 import Button from "../../UI/button";
 import CreationModal from "./components/CreationModal/CreationModal";
 import FormModal from "./components/FormModal/FormModal";
+import styles from "./styles.module.scss";
 const CreateNewNote = () => {
   const [isOpened, setIsOpened] = useState(false);
   const [text, setText] = useState("");
@@ -48,10 +49,12 @@ const CreateNewNote = () => {
           onSubmit={onSubmit}
         />
       </CreationModal>
-      <Button
-        text="Добавить новую заметку"
-        onClick={() => setIsOpened(!isOpened)}
-      />
+      <div className={styles.root}>
+        <Button
+          text="Добавить новую заметку"
+          onClick={() => setIsOpened(!isOpened)}
+        />
+      </div>
     </>
   );
 };

@@ -2,7 +2,6 @@ import { PropsWithChildren } from "react";
 import Modal from "../../../../components/Modal/Modal";
 import Portal from "../../../../components/Portal/Portal";
 import Overlay from "../Overlay/Overlay";
-import styles from "./styles.module.scss";
 interface PopupProps extends PropsWithChildren {
   isOpened: boolean;
   onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;

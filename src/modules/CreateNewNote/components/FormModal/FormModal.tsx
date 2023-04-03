@@ -13,11 +13,27 @@ const FormModal = memo(
       <>
         <form className={styles.form} method="post" onSubmit={onSubmit}>
           <label htmlFor="title">Название</label>
-          <input onChange={onChangeTitle} type="text" name="title" />
+          <input
+            placeholder="Название..."
+            onChange={onChangeTitle}
+            type="text"
+            name="title"
+          />
           <label htmlFor="descr">Описание</label>
-          <textarea onChange={onChangeText} name="descr" cols={30} rows={10} />
+          <textarea
+            placeholder="Описание заметки..."
+            onChange={onChangeText}
+            name="descr"
+            cols={30}
+            rows={10}
+          />
           <label htmlFor="tags">Теги</label>
-          <input onChange={onChangeTags} type="text" name="tags" />
+          <input
+            placeholder="Напишите теги через пробел..."
+            onChange={onChangeTags}
+            type="text"
+            name="tags"
+          />
           <Button type="submit" text="Создать заметку" />
         </form>
       </>

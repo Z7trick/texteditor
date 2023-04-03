@@ -3,18 +3,18 @@ interface NoteProps {
   content: string;
   tags: string[];
 }
-
+import styles from "./styles.module.scss";
 const Note = ({ title, content, tags }: NoteProps) => {
   return (
-    <div>
-      <h2>{title}</h2>
+    <article className={styles.root}>
+      <h1>{title}</h1>
       <p>{content}</p>
       <ul>
-        {tags.map((item) => {
-          return <li>{item}</li>;
+        {tags.map((item, i) => {
+          return <li key={i}>{item}</li>;
         })}
       </ul>
-    </div>
+    </article>
   );
 };
 
